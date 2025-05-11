@@ -13,6 +13,9 @@ sky:
     access-key-secret: Mvm1x29M8OBQxpR1DxPav2hf4VoZSh
     bucket-name: cangqiong-haoyu
 
-
+  redis:
+    host: localhost
+    port: 6379
+    database: 10
 
 
