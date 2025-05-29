@@ -18,9 +18,20 @@ sky:
     port: 6379
     database: 10
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
   wechat:
     appid: wx0355feeed4115f50
     secret: b4dad98427a9f8f8bf5dc509e6cdfbbe
+
+  elasticsearch:
+    uris: http://localhost:9200
+    username: 
+    password:
 
 
 
