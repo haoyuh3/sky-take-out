@@ -88,6 +88,22 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         return docket;
     }
 
+    @Bean
+    public Docket docket3() {
+        ApiInfo apiInfo = new ApiInfoBuilder()
+                .title("苍穹外卖项目测试接口文档")
+                .version("2.0")
+                .description("RabbitMQ、Elasticsearch等功能测试接口")
+                .build();
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .groupName("测试接口")
+                .apiInfo(apiInfo)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.sky.controller.test"))
+                .paths(PathSelectors.any())
+                .build();
+        return docket;
+    }
 
 
     /**
