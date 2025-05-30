@@ -5,10 +5,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sky.config.RabbitMQConfig;
 import com.sky.entity.Orders;
-import com.sky.service.OrderMessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -25,9 +25,8 @@ import java.util.Map;
 public class OrderMessageListener {
 
    @Autowired
+   @Qualifier("orderRedisTemplate")
    private RedisTemplate<Object, Object> redisTemplate;
-   @Autowired
-   private OrderMessageService orderMessageService;
 
    /**
     * 监听订单状态变更消息
@@ -48,7 +47,7 @@ public class OrderMessageListener {
 
            // 更新Redis中的订单状态缓存
            String cacheKey = "order:"  + orders.getId();
-              String jsonValue = json2String(orders.getStatus(), orders.getNumber());
+           String jsonValue = json2String(orders.getStatus(), orders.getNumber());
 
            redisTemplate.opsForValue().set(cacheKey, jsonValue);
 
