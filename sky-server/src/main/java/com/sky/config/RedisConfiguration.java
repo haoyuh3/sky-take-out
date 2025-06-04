@@ -53,4 +53,26 @@ public class RedisConfiguration {
         
         return redisTemplate;
     }
+
+    @Bean("dishRedisTemplate")
+    public RedisTemplate<Object, Object> dishRedisTemplate() {
+        log.info("dishRedisTemplate for database 8");
+
+        // 创建Redis连接配置，指定使用数据库8
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+        config.setHostName(host);
+        config.setPort(port);
+        config.setDatabase(8); // 设置为数据库8
+
+        // 创建连接工厂
+        LettuceConnectionFactory factory = new LettuceConnectionFactory(config);
+        factory.afterPropertiesSet();
+
+        // 创建RedisTemplate
+        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(factory);
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+
+        return redisTemplate;
+    }
 }
