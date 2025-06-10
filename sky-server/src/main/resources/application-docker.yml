@@ -1,8 +1,8 @@
 sky:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    host: localhost
-    port: 3307
+    host: sky-mysql
+    port: 3306
     database: sky_take_out
     username: root
     password: hhy760107
@@ -14,12 +14,12 @@ sky:
     bucket-name: cangqiong-haoyu
 
   redis:
-    host: localhost
+    host: sky-redis
     port: 6379
     database: 10
 
   rabbitmq:
-    host: localhost
+    host: sky-rabbitmq
     port: 5672
     username: guest
     password: guest
@@ -29,9 +29,21 @@ sky:
     secret: b4dad98427a9f8f8bf5dc509e6cdfbbe
 
   elasticsearch:
-    uris: http://localhost:9200
+    uris: http://sky-elasticsearch:9200
     username: 
     password:
 
+# Docker环境特定配置
+logging:
+  level:
+    root: INFO
+    com.sky: INFO
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
 
-
+# Spring Elasticsearch配置
+spring:
+  elasticsearch:
+    uris: http://sky-elasticsearch:9200
+    connection-timeout: 5s
+    socket-timeout: 30s 
