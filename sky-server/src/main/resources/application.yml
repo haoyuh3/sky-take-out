@@ -6,6 +6,12 @@ spring:
     active: dev
   main:
     allow-circular-references: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  web:
+    resources:
+      add-mappings: true
   datasource:
     druid:
       driver-class-name: ${sky.datasource.driver-class-name}
@@ -45,6 +51,29 @@ logging:
         mapper: debug
         service: info
         controller: info
+
+# 监控和健康检查配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+      show-components: always
+  health:
+    elasticsearch:
+      enabled: false  # 禁用Elasticsearch健康检查，避免启动时连接失败
+    redis:
+      enabled: true
+    db:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
 
 sky:
   jwt:
