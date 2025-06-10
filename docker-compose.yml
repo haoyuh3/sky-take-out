@@ -100,10 +100,29 @@ services:
       retries: 3
       start_period: 60s
 
+  # Jenkins CI/CD服务 - 最新LTS版本
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: sky-jenkins
+    user: root
+    ports:
+      - "8090:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/workspace
+    environment:
+      - JENKINS_OPTS=--httpPort=8080
+    networks:
+      - my_network
+    restart: unless-stopped
+
 volumes:
   mysql_data:
   redis_data:
   es_data:
+  jenkins_data:
 
 networks:
   my_network:

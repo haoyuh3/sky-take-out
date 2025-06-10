@@ -4,3 +4,19 @@
 *.class
 *Test.java
 **/test/
+
+# 敏感配置文件
+.env
+*.env
+application.yml
+application-dev.yml
+application-docker.yml
+
+# 日志文件
+logs/
+*.log
+
+# IDE文件
+.idea/
+*.iml
+.vscode/
