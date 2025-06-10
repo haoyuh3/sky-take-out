@@ -29,6 +29,7 @@ public class ShopController {
     @ApiOperation("设置店铺状态")
     public Result<String> setStatus(@PathVariable Integer status){
         log.info("设置status:{}", status == 1 ? "营业中" : "打烊");
+//        log.info("insert into redis: key={}, value={}", SHOP_STATUS, status);
         redisTemplate.opsForValue().set(SHOP_STATUS, status);
         return Result.success();
     }

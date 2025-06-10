@@ -24,6 +24,9 @@ RUN mvn clean package -DskipTests -B
 # 第二阶段 - 运行时镜像
 FROM openjdk:8-jre-slim
 
+# 安装curl用于健康检查
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 # 创建非root用户以提高安全性
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 

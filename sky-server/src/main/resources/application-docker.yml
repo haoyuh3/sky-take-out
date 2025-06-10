@@ -33,6 +33,8 @@ sky:
     username: 
     password:
 
+  
+
 # Docker环境特定配置
 logging:
   level:
@@ -47,3 +49,7 @@ spring:
     uris: http://sky-elasticsearch:9200
     connection-timeout: 5s
     socket-timeout: 30s 
+
+  springfox:
+    documentation:
+      enabled: false
