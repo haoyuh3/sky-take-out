@@ -3,15 +3,15 @@ sky:
     driver-class-name: com.mysql.cj.jdbc.Driver
     host: sky-mysql
     port: 3306
-    database: sky_take_out
-    username: root
-    password: hhy760107
+    database: 
+    username: 
+    password: 
 
   alioss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: LTAI5tNnD9tkdMNLaG8HxVQH
-    access-key-secret: Mvm1x29M8OBQxpR1DxPav2hf4VoZSh
-    bucket-name: cangqiong-haoyu
+    endpoint: 
+    access-key-id: 
+    access-key-secret: 
+    bucket-name: 
 
   redis:
     host: sky-redis
@@ -21,12 +21,12 @@ sky:
   rabbitmq:
     host: sky-rabbitmq
     port: 5672
-    username: guest
-    password: guest
+    username: 
+    password: 
 
   wechat:
-    appid: wx0355feeed4115f50
-    secret: b4dad98427a9f8f8bf5dc509e6cdfbbe
+    appid: 
+    secret:
 
   elasticsearch:
     uris: http://sky-elasticsearch:9200
