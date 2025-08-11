@@ -3,9 +3,9 @@ sky:
     driver-class-name: com.mysql.cj.jdbc.Driver
     host: localhost
     port: 3307
-    database: sky_take_out
-    username: root
-    password: hhy760107
+    database: 
+    username: 
+    password: 
 
   alioss:
     endpoint: 
@@ -25,8 +25,8 @@ sky:
     password: guest
 
   wechat:
-    appid: wx0355feeed4115f50
-    secret: b4dad98427a9f8f8bf5dc509e6cdfbbe
+    appid: 
+    secret: 
 
   elasticsearch:
     uris: http://localhost:9200
